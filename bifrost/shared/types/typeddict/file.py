@@ -28,14 +28,14 @@ class Options(TypedDict):
         content_type {str} -- content_type is the content type of the file
     """
 
-    # metadata is a map of metadata to store along with each file
     metadata: NotRequired[Dict[str, Any]]
-    # acl is the access control list to specify the visibility of the file
-    # public: anyone can access the file
-    # private: only authenticated users can access the file
+    """metadata is a map of metadata to store along with each file."""
     acl: NotRequired[str]
-    # content_type is the content type of the file
+    """acl is the access control list to specify the visibility of the file
+        public: anyone can access the file
+        private: only authenticated users can access the file."""
     content_type: NotRequired[str]
+    """content_type is the content type of the file."""
 
 
 class File(TypedDict):
@@ -49,12 +49,12 @@ class File(TypedDict):
         options {Options} -- options is a dict of options to store along with each file.
     """
 
-    # path is the path to the file.
     path: str
-    # filename is the name to store the file as with the provider.
+    """path is the path to the file."""
     filename: NotRequired[str]
-    # options is a dict of options to store along with each file.
+    """filename is the name to store the file as with the provider."""
     options: NotRequired[Options]
+    """options is a dict of options to store along with each file."""
 
 
 class MultiFile(TypedDict):
@@ -68,11 +68,13 @@ class MultiFile(TypedDict):
         say 3 of 4 files need to share the same option, you can set globally for those 3 files and set the 4th file's option separately, bifrost won't override the option.
     """
 
-    # files is a list of files to upload.
     files: List[File]
-    # GlobalOptions is a map of options to store along with all the files.
-    # say 3 of 4 files need to share the same option, you can set globally for those 3 files and set the 4th file's option separately, bifrost won't override the option.
+    """files is a list of files to upload."""
     global_options: NotRequired[Options]
+    """
+    GlobalOptions is a map of options to store along with all the files.
+        
+    Say 3 of 4 files need to share the same option, you can set globally for those 3 files and set the 4th file's option separately, bifrost won't override the option."""
 
 
 class ParamFile(TypedDict):
@@ -86,12 +88,12 @@ class ParamFile(TypedDict):
         key {str} -- key is the key to use for the file.
     """
 
-    # name is the name of the file
     name: str
-    # path is the path to the file
+    """name is the name of the file."""
     path: str
-    # key is the key to use for the file
+    """path is the path to the file."""
     key: str
+    """key is the key to use for the file."""
 
 
 class ParamData(TypedDict):
@@ -103,10 +105,10 @@ class ParamData(TypedDict):
         value {str} -- value is the value to use for the data.
     """
 
-    # key is the key to use for the data.
     key: str
-    # value is the value to use for the data.
+    """key is the key to use for the data."""
     value: str
+    """value is the value to use for the data."""
 
 
 class Param(TypedDict):
@@ -118,10 +120,10 @@ class Param(TypedDict):
         data {List[ParamData]} -- data is a list of data to upload along with the files.
     """
 
-    # files is a list of files to upload.
     files: List[ParamFile]
-    # data is a list of data to upload along with the files.
+    """files is a list of files to upload."""
     data: List[ParamData]
+    """data is a list of data to upload along with the files."""
 
 
 class UploadedFile(TypedDict):
@@ -153,27 +155,27 @@ class UploadedFile(TypedDict):
         error {Exception} -- error is the error returned by the provider. This is only used for async operations and multi file uploads.
     """
 
-    # name is the name of the file.
     name: str
-    # bucket is the bucket the file was uploaded to.
+    """name is the name of the file."""
     bucket: NotRequired[str]
-    # path is the local path to the file.
+    """bucket is the bucket the file was uploaded to."""
     path: str
-    # size is the size of the file in bytes.
+    """path is the local path to the file."""
     size: int
-    # url is the location of the file in the cloud.
+    """size is the size of the file in bytes."""
     url: str
-    # preview is the url to a preview of the file.
+    """url is the location of the file in the cloud."""
     preview: str
-    # provider_object is the object returned by the cloud storage provider.
-    # you need to cast it to the appropriate type before using it.
+    """preview is the url to a preview of the file."""
     provider_object: Any
-    # done sends a message to signal when an async process is complete.
+    """provider_object is the object returned by the cloud storage provider.
+        you need to cast it to the appropriate type before using it."""
     done: NotRequired[queue.Queue]
-    # quit receives a message to signal for an exit of an async process.
+    """done sends a message to signal when an async process is complete."""
     quit: NotRequired[queue.Queue]
-    # cid is the content identifier for the file.
-    # this is only implemented by some providers (e.g. Pinata Cloud)
+    """quit receives a message to signal for an exit of an async process."""
     cid: NotRequired[str]
-    # error is the error returned by the provider. This is only used for async operations and multi file uploads.
+    """cid is the content identifier for the file.
+        this is only implemented by some providers (e.g. Pinata Cloud)"""
     error: NotRequired[Exception]
+    """error is the error returned by the provider. This is only used for async operations and multi file uploads."""

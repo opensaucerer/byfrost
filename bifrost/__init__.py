@@ -13,7 +13,7 @@ from .shared.errors.color import (
     WARN,
 )
 from .shared.types.dataclass.bridge import BridgeConfig
-from shared.errors.constants import (
+from .shared.errors.constants import (
     ErrBadRequest,
     ErrClientError,
     ErrIncompleteMultiFileUpload,

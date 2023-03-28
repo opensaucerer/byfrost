@@ -6,13 +6,15 @@ from typing import Any
 class BifrostError(Exception):
     """BifrostError is the class for all bifrost exceptions"""
 
-    # Error is the error message
     Error: str
-    # Code is the error code
+    """Error is the error message"""
     Code: str
+    """Code is the error code"""
 
     def __init__(self, error: str, code: str, *args: Any): ...
-    # __str__ returns the error message
-    def __str__(self) -> str: ...
-    # code returns the error code
-    def code(self) -> str: ...
+    def __str__(self) -> str:
+        """__str__ returns the error message"""
+        ...
+    def code(self) -> str:
+        """code returns the error code"""
+        ...

@@ -2,20 +2,20 @@
 
 """Options constants."""
 
-# ACL is the option to set the ACL of the file.
 OptACL = "acl"
+"""ACL is the option to set the ACL of the file"""
 
-# PublicRead is the option to set the ACL of the file to public read.
 ACLPublicRead = "public-read"
+"""PublicRead is the option to set the ACL of the file to public read"""
 
-# Private is the option to set the ACL of the file to private.
 ACLPrivate = "private"
+"""Private is the option to set the ACL of the file to private"""
 
-# ContentType is the option to set the content type of the file.
 OptContentType = "content-type"
+"""ContentType is the option to set the content type of the file"""
 
-# Metadata is the option to set the metadata of the file.
 OptMetadata = "metadata"
+"""Metadata is the option to set the metadata of the file"""
 
-# OptPinata is the option to set the pinataOptions
 OptPinata = "pinataOptions"
+"""OptPinata is the option to set the pinataOptions."""

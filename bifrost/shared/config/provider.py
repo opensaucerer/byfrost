@@ -2,11 +2,11 @@
 
 """Provider constants"""
 
-# PinataCloud is the identifier of the Pinata Cloud storage
 PinataCloud = "pinata"
+"""PinataCloud is the identifier of the Pinata Cloud storage."""
 
-# SimpleStorageService is the identifier of the S3 provider
 SimpleStorageService = "s3"
+"""SimpleStorageService is the identifier of the S3 provider."""
 
-# GoogleCloudStorage is the identifier of the Google Cloud Storage provider
 GoogleCloudStorage = "gcs"
+"""GoogleCloudStorage is the identifier of the Google Cloud Storage provider."""

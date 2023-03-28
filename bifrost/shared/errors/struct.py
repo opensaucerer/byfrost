@@ -7,12 +7,14 @@ class BifrostError(Exception):
     def __init__(self, error, code, *args):
         super().__init__(args)
         self.Error = error
+        """Error is the error message"""
         self.Code = code
+        """Code is the error code"""
 
-    # __str__ returns the error message
     def __str__(self):
+        """__str__ returns the error message"""
         return self.Error
 
-    # code returns the error code
     def code(self):
+        """code returns the error code"""
         return self.Code

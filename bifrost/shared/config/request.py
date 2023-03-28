@@ -2,23 +2,23 @@
 
 """Request constants"""
 
-# ReqAuth is the authorization header identifier
 ReqAuth = "Authorization"
+"""ReqAuth is the authorization header identifier."""
 
-# ReqBearer is the bearer token identifier
 ReqBearer = "Bearer %s"
+"""ReqBearer is the bearer token identifier."""
 
-# ReqContentType is the content type header identifier
 ReqContentType = "Content-Type"
+"""ReqContentType is the content type header identifier."""
 
-# MethodGet is the HTTP method for GET requests.
 MethodGet = "GET"
+"""MethodGet is the HTTP method for GET requests."""
 
-# MethodPost is the HTTP method for POST requests.
 MethodPost = "POST"
+"""MethodPost is the HTTP method for POST requests."""
 
-# MethodPut is the HTTP method for PUT requests.
 MethodPut = "PUT"
+"""MethodPut is the HTTP method for PUT requests."""
 
-# MethodDelete is the HTTP method for DELETE requests.
 MethodDelete = "DELETE"
+"""MethodDelete is the HTTP method for DELETE requests."""

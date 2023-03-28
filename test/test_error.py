@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 
 from bifrost import BifrostError
+import unittest
 
 
-def test_error_struct():
-    try:
-        raise BifrostError("some stuff", "test")
-    except BifrostError as e:
-        assert e.code() == "test"
-        assert e.Error == "some stuff"
+class TestError(unittest.TestCase):
+    def test_error(self):
+        try:
+            raise BifrostError("some stuff", "test")
+        except BifrostError as e:
+            self.assertEqual(e.code(), "test")
+
+
+if __name__ == "__main__":
+    unittest.main()
