@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import pathlib
 from setuptools import setup, find_packages
 
@@ -10,9 +11,12 @@ setup(
     author="Ifihan Olusheye <victoriaolusheye@gmail.com>, Perfection Loveday <wizard@opensaucerer.com>",
     # author_email="victoriaolusheye@gmail.com",
     url="https://github.com/ifihan/bifrost",
-    packages=find_packages("pkg"),
-    package_dir={"": "pkg"},
-    install_requires=["requests"],
+    packages=find_packages("bifrost"),
+    package_dir={"": "bifrost"},
+    install_requires=["typing_extensions"],
+    setup_requires=["pytest-runner", "typing_extensions"],
+    tests_require=["pytest", "typing_extensions"],
+    test_suite="test",
     python_requires=">=3.6",
     classifiers=[
         "License :: OSI Approved :: MIT License",

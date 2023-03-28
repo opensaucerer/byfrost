@@ -29,18 +29,18 @@ class Options:
     """
 
     # metadata is a map of metadata to store along with each file
-    metadata: Optional[Dict[str, Any]]
+    metadata: Optional[Dict[str, Any]] = None
     # acl is the access control list to specify the visibility of the file
     # public: anyone can access the file
     # private: only authenticated users can access the file
-    acl: Optional[str]
+    acl: Optional[str] = ""
     # content_type is the content type of the file
-    content_type: Optional[str]
+    content_type: Optional[str] = ""
 
 
 @dataclass
 class File:
-    """File is the dict for uploading a single file
+    """File is the dataclass for uploading a single file
 
     Attributes:
         path {str} -- path is the path to the file.
@@ -53,20 +53,20 @@ class File:
     # path is the path to the file.
     path: str
     # filename is the name to store the file as with the provider.
-    filename: Optional[str]
+    filename: Optional[str] = ""
     # options is a dict of options to store along with each file.
-    options: Optional[Options]
+    options: Optional[Options] = None
 
 
 @dataclass
 class MultiFile:
-    """MultiFile is the struct for uploading multiple files.
+    """MultiFile is the dataclass for uploading multiple files.
     Along with options, you can also set global options that will be applied to all files.
 
     Attributes:
         files {List[File]} -- files is a list of files to upload
 
-        global_options {Options} -- global_options is a map of options to store along with all the files.
+        global_options {Options} -- global_options is a dict of options to store along with all the files.
         say 3 of 4 files need to share the same option, you can set globally for those 3 files and set the 4th file's option separately, bifrost won't override the option.
     """
 
@@ -74,12 +74,12 @@ class MultiFile:
     files: List[File]
     # GlobalOptions is a map of options to store along with all the files.
     # say 3 of 4 files need to share the same option, you can set globally for those 3 files and set the 4th file's option separately, bifrost won't override the option.
-    global_options: Optional[Options]
+    global_options: Optional[Options] = None
 
 
 @dataclass
 class ParamFile:
-    """ParamFile is the dict for uploading a single file in a multipart request.
+    """ParamFile is the dataclass for uploading a single file in a multipart request.
 
     Attributes:
         name {str} -- name is the name of the file.
@@ -99,7 +99,7 @@ class ParamFile:
 
 @dataclass
 class ParamData:
-    """ParamData is the dict for uploading data along with files in a multipart request.
+    """ParamData is the dataclass for uploading data along with files in a multipart request.
 
     Attributes:
         key {str} -- key is the key to use for the data.
@@ -115,7 +115,7 @@ class ParamData:
 
 @dataclass
 class Param:
-    """Param is the dict used to pass parameters to request methods
+    """Param is the dataclass used to pass parameters to request methods
 
     Attributes:
         files {List[ParamFile]} -- files is a list of files to upload.
@@ -131,7 +131,7 @@ class Param:
 
 @dataclass
 class UploadedFile:
-    """UploadedFile is the dict representing a completed file/files upload.
+    """UploadedFile is the dataclass representing a completed file/files upload.
 
     Attributes:
         name {str} -- name is the name of the file.
@@ -173,13 +173,13 @@ class UploadedFile:
     # you need to cast it to the appropriate type before using it.
     provider_object: Any
     # bucket is the bucket the file was uploaded to.
-    bucket: Optional[str] = None
+    bucket: Optional[str] = ""
     # done sends a message to signal when an async process is complete.
     done: Optional[queue.Queue] = None
     # quit receives a message to signal for an exit of an async process.
     quit: Optional[queue.Queue] = None
     # cid is the content identifier for the file.
     # this is only implemented by some providers (e.g. Pinata Cloud)
-    cid: Optional[str] = None
+    cid: Optional[str] = ""
     # error is the error returned by the provider. This is only used for async operations and multi file uploads.
     error: Optional[Exception] = None
