@@ -58,7 +58,7 @@ class File(TypedDict):
 
 
 class MultiFile(TypedDict):
-    """MultiFile is the struct for uploading multiple files.
+    """MultiFile is the dict for uploading multiple files.
     Along with options, you can also set global options that will be applied to all files.
 
     Attributes:

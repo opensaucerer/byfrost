@@ -40,7 +40,7 @@ class Options:
 
 @dataclass
 class File:
-    """File is the dict for uploading a single file
+    """File is the dataclass for uploading a single file
 
     Attributes:
         path {str} -- path is the path to the file.
@@ -60,7 +60,7 @@ class File:
 
 @dataclass
 class MultiFile:
-    """MultiFile is the struct for uploading multiple files.
+    """MultiFile is the dataclass for uploading multiple files.
     Along with options, you can also set global options that will be applied to all files.
 
     Attributes:
@@ -81,7 +81,7 @@ class MultiFile:
 
 @dataclass
 class ParamFile:
-    """ParamFile is the dict for uploading a single file in a multipart request.
+    """ParamFile is the dataclass for uploading a single file in a multipart request.
 
     Attributes:
         name {str} -- name is the name of the file.
@@ -101,7 +101,7 @@ class ParamFile:
 
 @dataclass
 class ParamData:
-    """ParamData is the dict for uploading data along with files in a multipart request.
+    """ParamData is the dataclass for uploading data along with files in a multipart request.
 
     Attributes:
         key {str} -- key is the key to use for the data.
@@ -117,7 +117,7 @@ class ParamData:
 
 @dataclass
 class Param:
-    """Param is the dict used to pass parameters to request methods
+    """Param is the dataclass used to pass parameters to request methods
 
     Attributes:
         files {List[ParamFile]} -- files is a list of files to upload.
