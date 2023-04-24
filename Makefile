@@ -9,7 +9,10 @@ test-nose:
 	pip install -r requirements.txt && python -m nose2
 
 wheel:
-	python setup.py bdist_wheel
+	rm -rf build dist && ./setup.py sdist bdist_wheel
 
 install:
-	pip install dist/bifrost-0.0.1-py3-none-any.whl
+	pip uninstall byfrost -y && pip install dist/byfrost-0.0.0.0-py2.py3-none-any.whl --force-reinstall
+
+testpypi:
+	python3 -m twine upload --repository testpypi dist/*

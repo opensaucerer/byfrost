@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from bifrost import BifrostError
+from byfrost import BifrostError
 import unittest
 
 

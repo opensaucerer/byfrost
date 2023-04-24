@@ -3,7 +3,11 @@
 All type definitions relating to the bifrost bridge but using dataclasses
 """
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Callable
+from . import file as bfile
+from typing import List, Tuple
+
+from ...errors.interface import BifrostError
 
 
 @dataclass
@@ -77,3 +81,54 @@ class BridgeConfig:
     """use_async enables asynchronous operations with any of asyncio, threads, queue, and multi-processing."""
     pinata_jwt: Optional[str] = ""
     """pinata_jwt is the jwt generated for your pinata cloud account."""
+
+
+@dataclass
+class RainbowBridge:
+    """
+    The RainbowBridge interface for Google Cloud Storage
+
+    All providers must implement this interface completely
+    """
+
+    upload_file: Callable[[bfile.File], Tuple[bfile.UploadedFile, BifrostError]]
+    """
+    upload_file uploads a file to the provider storage and returns an error if one occurs.
+
+    Note: for some providers, upload_file requires that a default bucket be set in bifrosbfile.BridgeConfig.
+    """
+
+    upload_multi_file: Callable[
+        [bfile.MultiFile], Tuple[List[bfile.UploadedFile], BifrostError]
+    ]
+    """
+    upload_multi_file uploads mutliple files to the provider storage and returns an error if one occurs. If any of the uploads fail, the error is appended to the []UploadedFile.Error and also logged when debug is enabled while the rest of the uploads continue.
+
+    Note: for some providers, UploadMultiFile requires that a default bucket be set in bifrosbfile.BridgeConfig.
+    """
+
+    disconnect: Callable[[], BifrostError]
+    """
+    disconnect closes the provider client connection and returns an error if one occurs.
+
+    Disconnect should only be called when the connection is no longer needed.
+    """
+
+    config: Callable[[], BridgeConfig]
+    """
+    config returns the provider configuration.
+    """
+
+    is_connected: Callable[[], bool]
+    """
+    is_connected returns true if there is an active connection to the provider.
+    """
+
+    upload_folder: Callable[
+        [bfile.MultiFile], Tuple[List[bfile.UploadedFile], BifrostError]
+    ]
+    """
+    upload_folder uploads a folder to the provider storage and returns an error if one occurs.
+
+    Note: for some providers, upload_folder requires that a default bucket be set in bifrosbfile.BridgeConfig.
+    """

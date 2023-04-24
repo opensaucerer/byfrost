@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Any
 
 class BifrostError(Exception):
-    """BifrostError is the class for all bifrost exceptions"""
+    """BifrostError is the class for all bifrost BifrostErrors"""
 
     Error: str
     """Error is the error message"""
@@ -17,4 +17,7 @@ class BifrostError(Exception):
         ...
     def code(self) -> str:
         """code returns the error code"""
+        ...
+    def nil(self) -> bool:
+        """nil returns true if the error is nil"""
         ...

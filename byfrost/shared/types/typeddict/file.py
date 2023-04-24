@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """
-All type definitions relating to files in bifrost but using dataclasses
+All type definitions relating to files in bifrost but using TypedDict
+
+This is majorly for end users who want to pass a kwargs dict to the bifrost dataclass when using bifrost functions
 """
-from typing import TypedDict, Any, List, Dict, Optional
+from typing import TypedDict, Any, List, Dict
 import sys
-from dataclasses import dataclass
+from ...errors.interface import BifrostError
 
 # You may also pick one without version check, of course but this is more backward compatible
 if sys.version_info < (3, 11):
@@ -14,8 +16,7 @@ else:
 import queue
 
 
-@dataclass
-class Options:
+class Options(TypedDict):
     """Options is a dict of options to store along with each file
 
     Attributes:
@@ -28,19 +29,18 @@ class Options:
         content_type {str} -- content_type is the content type of the file
     """
 
-    metadata: Optional[Dict[str, Any]] = None
+    metadata: NotRequired[Dict[str, Any]]
     """metadata is a map of metadata to store along with each file."""
-    acl: Optional[str] = ""
+    acl: NotRequired[str]
     """acl is the access control list to specify the visibility of the file
         public: anyone can access the file
         private: only authenticated users can access the file."""
-    content_type: Optional[str] = ""
+    content_type: NotRequired[str]
     """content_type is the content type of the file."""
 
 
-@dataclass
-class File:
-    """File is the dataclass for uploading a single file
+class File(TypedDict):
+    """File is the dict for uploading a single file
 
     Attributes:
         path {str} -- path is the path to the file.
@@ -52,15 +52,14 @@ class File:
 
     path: str
     """path is the path to the file."""
-    filename: Optional[str] = ""
+    filename: NotRequired[str]
     """filename is the name to store the file as with the provider."""
-    options: Optional[Options] = None
+    options: NotRequired[Options]
     """options is a dict of options to store along with each file."""
 
 
-@dataclass
-class MultiFile:
-    """MultiFile is the dataclass for uploading multiple files.
+class MultiFile(TypedDict):
+    """MultiFile is the dict for uploading multiple files.
     Along with options, you can also set global options that will be applied to all files.
 
     Attributes:
@@ -72,16 +71,15 @@ class MultiFile:
 
     files: List[File]
     """files is a list of files to upload."""
-    global_options: Optional[Options] = None
+    global_options: NotRequired[Options]
     """
     GlobalOptions is a map of options to store along with all the files.
         
     Say 3 of 4 files need to share the same option, you can set globally for those 3 files and set the 4th file's option separately, bifrost won't override the option."""
 
 
-@dataclass
-class ParamFile:
-    """ParamFile is the dataclass for uploading a single file in a multipart request.
+class ParamFile(TypedDict):
+    """ParamFile is the dict for uploading a single file in a multipart request.
 
     Attributes:
         name {str} -- name is the name of the file.
@@ -99,9 +97,8 @@ class ParamFile:
     """key is the key to use for the file."""
 
 
-@dataclass
-class ParamData:
-    """ParamData is the dataclass for uploading data along with files in a multipart request.
+class ParamData(TypedDict):
+    """ParamData is the dict for uploading data along with files in a multipart request.
 
     Attributes:
         key {str} -- key is the key to use for the data.
@@ -115,9 +112,8 @@ class ParamData:
     """value is the value to use for the data."""
 
 
-@dataclass
-class Param:
-    """Param is the dataclass used to pass parameters to request methods
+class Param(TypedDict):
+    """Param is the dict used to pass parameters to request methods
 
     Attributes:
         files {List[ParamFile]} -- files is a list of files to upload.
@@ -131,9 +127,8 @@ class Param:
     """data is a list of data to upload along with the files."""
 
 
-@dataclass
-class UploadedFile:
-    """UploadedFile is the dataclass representing a completed file/files upload.
+class UploadedFile(TypedDict):
+    """UploadedFile is the dict representing a completed file/files upload.
 
     Attributes:
         name {str} -- name is the name of the file.
@@ -158,13 +153,11 @@ class UploadedFile:
         cid {str} -- cid is the content identifier for the file.
         this is only implemented by some providers (e.g. Pinata Cloud)
 
-        error {Exception} -- error is the error returned by the provider. This is only used for async operations and multi file uploads.
+        error {BifrostError} -- error is the error returned by the provider. This is only used for async operations and multi file uploads.
     """
 
     name: str
     """name is the name of the file."""
-    bucket: Optional[str] = ""
-    """bucket is the bucket the file was uploaded to."""
     path: str
     """path is the local path to the file."""
     size: int
@@ -176,12 +169,14 @@ class UploadedFile:
     provider_object: Any
     """provider_object is the object returned by the cloud storage provider.
         you need to cast it to the appropriate type before using it."""
-    done: Optional[queue.Queue] = None
+    bucket: NotRequired[str]
+    """bucket is the bucket the file was uploaded to."""
+    done: NotRequired[queue.Queue]
     """done sends a message to signal when an async process is complete."""
-    quit: Optional[queue.Queue] = None
+    quit: NotRequired[queue.Queue]
     """quit receives a message to signal for an exit of an async process."""
-    cid: Optional[str] = ""
+    cid: NotRequired[str]
     """cid is the content identifier for the file.
         this is only implemented by some providers (e.g. Pinata Cloud)"""
-    error: Optional[Exception] = None
+    error: NotRequired[BifrostError]
     """error is the error returned by the provider. This is only used for async operations and multi file uploads."""
