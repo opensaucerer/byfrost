@@ -7,6 +7,18 @@ It's like bifrost from marvel comics, but for files.
 """
 
 from .shared.types.dataclass.bridge import BridgeConfig, RainbowBridge
+from .shared.types.typeddict.bridge import (
+    BridgeConfigDict,
+)
+from .shared.types.typeddict.file import (
+    FileDict,
+    MultiFileDict,
+    OptionsDict,
+    ParamDict,
+    ParamFileDict,
+    UploadedFileDict,
+    ParamDataDict,
+)
 from .shared.errors.constants import (
     ErrBadRequest,
     ErrClientError,

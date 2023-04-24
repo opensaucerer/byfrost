@@ -11,6 +11,11 @@ from typing import List, Tuple
 from ..shared.errors.interface import BifrostError
 
 class GoogleCloudStorage:
+    """GoogleCloudStorage is the Google Cloud Storage class"""
+
+    def __init__(self, bc: bridge.BridgeConfig):
+        """__init__ initializes the GoogleCloudStorage class."""
+        ...
     def upload_file(file_face: bfile.File) -> Tuple[bfile.UploadedFile, BifrostError]:
         """
         upload_file uploads a file to the provider storage and returns an error if one occurs.

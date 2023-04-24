@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-All type definitions relating to the bifrost bridge but using dataclasses
+All type definitions relating to the bifrost bridge but using TypedDict
 
 This is majorly for end users who want to pass a kwargs dict to the bifrost dataclass when using bifrost functions
 """
@@ -14,9 +14,9 @@ else:
     from typing import NotRequired
 
 
-class BridgeConfig(TypedDict):
+class BridgeConfigDict(TypedDict):
     """
-    BridgeConfig is the configuration for the rainbow bridge.
+    BridgeConfigDict is the configuration for the rainbow bridge.
 
     Attributes:
 

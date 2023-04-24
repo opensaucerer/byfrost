@@ -3,7 +3,7 @@
 All type definitions relating to the bifrost bridge but using dataclasses
 """
 from dataclasses import dataclass
-from typing import Optional, Callable
+from typing import Optional, Callable, Any
 from . import file as bfile
 from typing import List, Tuple
 
@@ -81,6 +81,7 @@ class BridgeConfig:
     """use_async enables asynchronous operations with any of asyncio, threads, queue, and multi-processing."""
     pinata_jwt: Optional[str] = ""
     """pinata_jwt is the jwt generated for your pinata cloud account."""
+    client: Optional[Any] = None
 
 
 @dataclass

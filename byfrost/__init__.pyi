@@ -1,6 +1,18 @@
 #!/usr/bin/env python3
 
 from .shared.types.dataclass.bridge import BridgeConfig, RainbowBridge
+from .shared.types.typeddict.bridge import (
+    BridgeConfigDict,
+)
+from .shared.types.typeddict.file import (
+    FileDict,
+    MultiFileDict,
+    OptionsDict,
+    ParamDict,
+    ParamFileDict,
+    UploadedFileDict,
+    ParamDataDict,
+)
 from .shared.errors.constants import (
     ErrBadRequest,
     ErrClientError,
@@ -27,6 +39,14 @@ from .bifrost import new_rainbow_bridge
 __all__ = [
     "BridgeConfig",
     "RainbowBridge",
+    "BridgeConfigDict",
+    "FileDict",
+    "MultiFileDict",
+    "OptionsDict",
+    "ParamDict",
+    "ParamFileDict",
+    "UploadedFileDict",
+    "ParamDataDict",
     "ErrBadRequest",
     "ErrClientError",
     "ErrIncompleteMultiFileUpload",

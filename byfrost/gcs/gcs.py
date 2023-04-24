@@ -9,52 +9,36 @@ from ..shared.errors.interface import BifrostError
 
 
 class GoogleCloudStorage:
-    """GoogleCloudStorage is the Google Cloud Storage class"""
+    def __init__(self, bc: bridge.BridgeConfig):
+        pass
 
     def upload_file(file_face: bfile.File) -> Tuple[bfile.UploadedFile, BifrostError]:
         """
-        upload_file uploads a file to the provider storage and returns an error if one occurs.
+        bucket = storage_client.get_bucket(config.wm_bucket)
+        blob = bucket.blob(p_file["title"])
+        blob.upload_from_filename(
+            f"{config.video_folder + '/' + utils.generate_wm_name(p_file['title'])}/{p_file['title']}"
+        )
+        blob.make_public()
 
-        Note: for some providers, upload_file requires that a default bucket be set in bifrosbfile.BridgeConfig.
         """
-        ...
+        pass
 
     def upload_multi_file(
         multi_face: bfile.MultiFile,
     ) -> Tuple[List[bfile.UploadedFile], BifrostError]:
-        """
-        upload_multi_file uploads mutliple files to the provider storage and returns an error if one occurs. If any of the uploads fail, the error is appended to the []UploadedFile.Error and also logged when debug is enabled while the rest of the uploads continue.
-
-        Note: for some providers, UploadMultiFile requires that a default bucket be set in bifrosbfile.BridgeConfig.
-        """
-        ...
+        pass
 
     def disconnect() -> BifrostError:
-        """
-        disconnect closes the provider client connection and returns an error if one occurs.
-
-        Disconnect should only be called when the connection is no longer needed.
-        """
-        ...
+        pass
 
     def config() -> bridge.BridgeConfig:
-        """
-        config returns the provider configuration.
-        """
-        ...
+        pass
 
     def is_connected() -> bool:
-        """
-        is_connected returns true if there is an active connection to the provider.
-        """
-        ...
+        pass
 
     def upload_folder(
         fold_face: bfile.MultiFile,
     ) -> Tuple[List[bfile.UploadedFile], BifrostError]:
-        """
-        upload_folder uploads a folder to the provider storage and returns an error if one occurs.
-
-        Note: for some providers, upload_folder requires that a default bucket be set in bifrosbfile.BridgeConfig.
-        """
-        ...
+        pass

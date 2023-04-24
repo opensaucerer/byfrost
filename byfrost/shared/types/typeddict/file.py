@@ -16,7 +16,7 @@ else:
 import queue
 
 
-class Options(TypedDict):
+class OptionsDict(TypedDict):
     """Options is a dict of options to store along with each file
 
     Attributes:
@@ -39,7 +39,7 @@ class Options(TypedDict):
     """content_type is the content type of the file."""
 
 
-class File(TypedDict):
+class FileDict(TypedDict):
     """File is the dict for uploading a single file
 
     Attributes:
@@ -54,11 +54,11 @@ class File(TypedDict):
     """path is the path to the file."""
     filename: NotRequired[str]
     """filename is the name to store the file as with the provider."""
-    options: NotRequired[Options]
+    options: NotRequired[OptionsDict]
     """options is a dict of options to store along with each file."""
 
 
-class MultiFile(TypedDict):
+class MultiFileDict(TypedDict):
     """MultiFile is the dict for uploading multiple files.
     Along with options, you can also set global options that will be applied to all files.
 
@@ -69,16 +69,16 @@ class MultiFile(TypedDict):
         say 3 of 4 files need to share the same option, you can set globally for those 3 files and set the 4th file's option separately, bifrost won't override the option.
     """
 
-    files: List[File]
+    files: List[FileDict]
     """files is a list of files to upload."""
-    global_options: NotRequired[Options]
+    global_options: NotRequired[OptionsDict]
     """
     GlobalOptions is a map of options to store along with all the files.
         
     Say 3 of 4 files need to share the same option, you can set globally for those 3 files and set the 4th file's option separately, bifrost won't override the option."""
 
 
-class ParamFile(TypedDict):
+class ParamFileDict(TypedDict):
     """ParamFile is the dict for uploading a single file in a multipart request.
 
     Attributes:
@@ -97,7 +97,7 @@ class ParamFile(TypedDict):
     """key is the key to use for the file."""
 
 
-class ParamData(TypedDict):
+class ParamDataDict(TypedDict):
     """ParamData is the dict for uploading data along with files in a multipart request.
 
     Attributes:
@@ -112,7 +112,7 @@ class ParamData(TypedDict):
     """value is the value to use for the data."""
 
 
-class Param(TypedDict):
+class ParamDict(TypedDict):
     """Param is the dict used to pass parameters to request methods
 
     Attributes:
@@ -121,13 +121,13 @@ class Param(TypedDict):
         data {List[ParamData]} -- data is a list of data to upload along with the files.
     """
 
-    files: List[ParamFile]
+    files: List[ParamFileDict]
     """files is a list of files to upload."""
-    data: List[ParamData]
+    data: List[ParamDataDict]
     """data is a list of data to upload along with the files."""
 
 
-class UploadedFile(TypedDict):
+class UploadedFileDict(TypedDict):
     """UploadedFile is the dict representing a completed file/files upload.
 
     Attributes:

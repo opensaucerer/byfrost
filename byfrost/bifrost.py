@@ -7,3 +7,8 @@ from typing import Tuple
 
 def new_rainbow_bridge(bc: BridgeConfig) -> Tuple[RainbowBridge, BifrostError]:
     pass
+
+
+def new_google_cloud_storage(bc: BridgeConfig) -> Tuple[RainbowBridge, BifrostError]:
+    """storage_client = storage.Client()"""
+    pass
