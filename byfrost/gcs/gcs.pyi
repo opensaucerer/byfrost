@@ -16,7 +16,9 @@ class GoogleCloudStorage:
     def __init__(self, bc: bridge.BridgeConfig):
         """__init__ initializes the GoogleCloudStorage class."""
         ...
-    def upload_file(file_face: bfile.File) -> Tuple[bfile.UploadedFile, BifrostError]:
+    def upload_file(
+        self, file_face: bfile.File
+    ) -> Tuple[bfile.UploadedFile, BifrostError]:
         """
         upload_file uploads a file to the provider storage and returns an error if one occurs.
 
@@ -24,6 +26,7 @@ class GoogleCloudStorage:
         """
         ...
     def upload_multi_file(
+        self,
         multi_face: bfile.MultiFile,
     ) -> Tuple[List[bfile.UploadedFile], BifrostError]:
         """
@@ -32,24 +35,25 @@ class GoogleCloudStorage:
         Note: for some providers, UploadMultiFile requires that a default bucket be set in bifrosbfile.BridgeConfig.
         """
         ...
-    def disconnect() -> BifrostError:
+    def disconnect(self) -> BifrostError:
         """
         disconnect closes the provider client connection and returns an error if one occurs.
 
         Disconnect should only be called when the connection is no longer needed.
         """
         ...
-    def config() -> bridge.BridgeConfig:
+    def config(self) -> bridge.BridgeConfig:
         """
         config returns the provider configuration.
         """
         ...
-    def is_connected() -> bool:
+    def is_connected(self) -> bool:
         """
         is_connected returns true if there is an active connection to the provider.
         """
         ...
     def upload_folder(
+        self,
         fold_face: bfile.MultiFile,
     ) -> Tuple[List[bfile.UploadedFile], BifrostError]:
         """

@@ -12,7 +12,9 @@ class GoogleCloudStorage:
     def __init__(self, bc: bridge.BridgeConfig):
         pass
 
-    def upload_file(file_face: bfile.File) -> Tuple[bfile.UploadedFile, BifrostError]:
+    def upload_file(
+        self, file_face: bfile.File
+    ) -> Tuple[bfile.UploadedFile, BifrostError]:
         """
         bucket = storage_client.get_bucket(config.wm_bucket)
         blob = bucket.blob(p_file["title"])
@@ -25,20 +27,22 @@ class GoogleCloudStorage:
         pass
 
     def upload_multi_file(
+        self,
         multi_face: bfile.MultiFile,
     ) -> Tuple[List[bfile.UploadedFile], BifrostError]:
         pass
 
-    def disconnect() -> BifrostError:
+    def disconnect(self) -> BifrostError:
         pass
 
-    def config() -> bridge.BridgeConfig:
+    def config(self) -> bridge.BridgeConfig:
         pass
 
-    def is_connected() -> bool:
+    def is_connected(self) -> bool:
         pass
 
     def upload_folder(
+        self,
         fold_face: bfile.MultiFile,
     ) -> Tuple[List[bfile.UploadedFile], BifrostError]:
         pass

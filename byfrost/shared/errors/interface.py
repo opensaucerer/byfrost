@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 
+from typing import Any
+
 
 class BifrostError(Exception):
-    def __init__(self, error, code, *args):
-        super().__init__(args)
+    def __init__(self, error: str = "", code: str = ""):
+        super().__init__(error, code)
         self.Error = error
         self.Code = code
 

@@ -2,6 +2,8 @@
 
 """Provider constants"""
 
+from typing import Dict
+
 PinataCloud = "pinata"
 """PinataCloud is the identifier of the Pinata Cloud storage."""
 
@@ -12,9 +14,9 @@ GoogleCloudStorage = "gcs"
 """GoogleCloudStorage is the identifier of the Google Cloud Storage provider."""
 
 
-providers = {
+providers: Dict[str, str] = {
     "pinata": "Pinata Cloud Storage",
-    "s3":     "Simple Storage Service",
-    "gcs":    "Google Cloud Storage",
-} 
+    "s3": "Simple Storage Service",
+    "gcs": "Google Cloud Storage",
+}
 """providers is a map of the supported providers"""

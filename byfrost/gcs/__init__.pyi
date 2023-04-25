@@ -1,3 +1,3 @@
 #!/usr/bin/env python3
 
-from . import GoogleCloudStorage
+from .gcs import GoogleCloudStorage
