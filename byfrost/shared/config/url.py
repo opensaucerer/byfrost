@@ -14,11 +14,11 @@ URLPinataPinCID = "https://api.pinata.cloud/pinning/pinByHash"
 URLPinataAuth = "https://api.pinata.cloud/data/testAuthentication"
 """URLPinataAuth is the endpoint for testing authentication against provided Pinata credentials."""
 
-URLPinataGateway = "https://gateway.pinata.cloud/ipfs/%v"
+URLPinataGateway = "https://gateway.pinata.cloud/ipfs/{}"
 """URLPinataGateway is the public gateway for Pinata cloud."""
 
-URLGoogleCloudStorage = "https://storage.googleapis.com/%s/%s"
+URLGoogleCloudStorage = "https://storage.googleapis.com/{}/{}"
 """URLGoogleCloudStorage is the public gateway for Google Cloud Storage."""
 
-URLSimpleStorageService = "https://%s.s3.%s.amazonaws.com/%s"
+URLSimpleStorageService = "https://{}.s3.{}.amazonaws.com/{}"
 """URLSimpleStorageService is the public gateway for Simple Storage Service."""

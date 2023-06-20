@@ -23,6 +23,7 @@ def warn(message: str, *args: Any, **kwargs: Any) -> None:
 def error(message: str, *args: Any, **kwargs: Any) -> None:
     logger = _get_logger("byfrost")
     logger.error(message, *args, **kwargs)
+    return
 
 
 def info(message: str, *args: Any, **kwargs: Any) -> None:

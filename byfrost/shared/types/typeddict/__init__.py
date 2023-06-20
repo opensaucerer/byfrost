@@ -6,7 +6,7 @@ from .file import (
     MultiFileDict,
     OptionsDict,
     ParamDict,
-    ParamDataDcict,
+    ParamDataDict,
     ParamFileDict,
     UploadedFileDict,
 )

@@ -8,13 +8,13 @@ Bifrost has adopted a Code of Conduct that we expect project participants to adh
 
 ## Reporting Issues
 
-If you have found a bug or have a feature request, please report them at this repository's [issues section](https://github.com/opensaucerer/bifrost/issues). Please check that your issue has not already been reported.
+If you have found a bug or have a feature request, please report them at this repository's [issues section](https://github.com/ifihan/byfrost/issues). Please check that your issue has not already been reported.
 
 ## Contributing Code
 
 If you would like to contribute code to fix a bug, implement a new feature, or improve the documentation, please follow the steps below:
 
-1. Open a detailed issue for your contribution (here)[https://github.com/opensaucerer/bifrost/issues]
+1. Open a detailed issue for your contribution (here)[https://github.com/ifihan/byfrost/issues]
 2. Fork the repository.
 3. Create a new branch for your fix/feature.
 4. Make your changes, committing at logical breaks.

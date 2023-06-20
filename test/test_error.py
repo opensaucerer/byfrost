@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
-from byfrost import BifrostError
+import byfrost
 import unittest
 
 
 class TestError(unittest.TestCase):
     def test_error(self):
         try:
-            raise BifrostError("some stuff", "test")
-        except BifrostError as e:
+            raise byfrost.BifrostError("some stuff", "test")
+        except byfrost.BifrostError as e:
             self.assertEqual(e.code(), "test")
 
 

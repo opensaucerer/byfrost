@@ -1,12 +1,12 @@
 
-test-all:
-	python setup.py pytest
+testall:
+	pip install -r requirements.txt && python3 -m unittest discover
 
-test-unit:
-	pip install -r requirements.txt && python -m unittest discover
+testunit:
+	pip install -r requirements.txt && python3 -m unittest discover
 
-test-nose:
-	pip install -r requirements.txt && python -m nose2
+testnose:
+	pip install -r requirements.txt && python3 -m nose2
 
 wheel:
 	rm -rf build dist && ./setup.py sdist bdist_wheel
